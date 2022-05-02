@@ -10,6 +10,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * BonusService Tester.
@@ -34,8 +36,16 @@ public class BonusServiceTest {
     @Test
     public void bonusDeveriaSerZeroParaFuncionarioComSalarioMuitoAlto() throws Exception {
         BonusService service = new BonusService();
-        BigDecimal bonus = service.calcularBonus(new Funcionario("Alisson", LocalDate.now(), new BigDecimal("25000")));
-        assertEquals(new BigDecimal("0.00"), bonus);
+        assertThrows(IllegalArgumentException.class,
+                () -> service.calcularBonus(new Funcionario("Alisson", LocalDate.now(), new BigDecimal("25000"))));
+        //Ou entao poderia ser assim para testar a msg da exception:
+        /*try{
+            service.calcularBonus(new Funcionario("Alisson", LocalDate.now(), new BigDecimal("25000")));
+            fail("Nao deu a exception!");
+        }catch(Exception e){
+            assertEquals("Funcionario com salario maior do que R$10000 nao pode receber bonus!", e.getMessage());
+        }*/
+
     }
     @Test
     public void bonusDeveriaSer10PorCentoDoSalario() throws Exception {

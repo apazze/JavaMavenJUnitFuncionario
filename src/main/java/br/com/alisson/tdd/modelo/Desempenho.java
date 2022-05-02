@@ -1,4 +1,4 @@
-package test.br.com.alisson.tdd.service;
+package br.com.alisson.tdd.modelo;
 
 import java.math.BigDecimal;
 

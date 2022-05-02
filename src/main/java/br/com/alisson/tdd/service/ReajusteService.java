@@ -1,5 +1,6 @@
-package test.br.com.alisson.tdd.service;
+package br.com.alisson.tdd.service;
 
+import br.com.alisson.tdd.modelo.Desempenho;
 import br.com.alisson.tdd.modelo.Funcionario;
 
 import java.math.BigDecimal;
